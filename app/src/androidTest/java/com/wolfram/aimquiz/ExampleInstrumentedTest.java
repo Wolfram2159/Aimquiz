@@ -1,4 +1,4 @@
-package com.example.aimquiz;
+package com.wolfram.aimquiz;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
