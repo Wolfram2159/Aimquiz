@@ -1,5 +1,6 @@
 package com.wolfram.aimquiz;
 
+import android.arch.persistence.room.Room;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -34,5 +35,8 @@ public class MainActivity extends AppCompatActivity {
             throw sqle;
 
         }
+        AppDatabase db = Room
+                .databaseBuilder(getApplicationContext(), AppDatabase.class, "aimquiz")
+                .build();
     }
 }
