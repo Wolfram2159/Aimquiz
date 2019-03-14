@@ -3,6 +3,7 @@ package com.wolfram.aimquiz;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -20,9 +21,8 @@ public class MainActivity extends AppCompatActivity {
             myDbHelper.createDataBase();
 
         } catch (IOException ioe) {
-
+            Log.e("asd","asd");
             throw new Error("Unable to create database");
-
         }
 
         try {
