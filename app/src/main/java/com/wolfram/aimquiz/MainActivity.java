@@ -1,12 +1,14 @@
 package com.wolfram.aimquiz;
 
-import android.arch.persistence.room.Room;
-import android.database.SQLException;
+import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,29 +16,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DataBaseHelper myDbHelper = new DataBaseHelper(MainActivity.this);
-        myDbHelper = new DataBaseHelper(this);
 
-        try {
-
-            myDbHelper.createDataBase();
-
-        } catch (IOException ioe) {
-            Log.e("asd","asd");
-            throw new Error("Unable to create database");
-        }
-
-        try {
-
-            myDbHelper.openDataBase();
-
-        }catch(SQLException sqle){
-
-            throw sqle;
-
-        }
         AppDatabase db = Room
-                .databaseBuilder(getApplicationContext(), AppDatabase.class, "aimquiz")
+                .databaseBuilder(getApplicationContext(), AppDatabase.class, "aimquiz.db")
+                .allowMainThreadQueries()
                 .build();
+        UserDao userDao = db.userDao();
+
+        AssetManager assetManager = getApplicationContext().getAssets();
+        InputStream inputStream = null;
+        CSVReader csvReader;
+        List<Team> teamList;
+        List<Player> playersList;
+        try {
+            inputStream = assetManager.open("teams.csv");
+            csvReader = new CSVReader(inputStream);
+            teamList = csvReader.read();
+            userDao.InsertTeamList(teamList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            inputStream = assetManager.open("players.csv");
+            csvReader = new CSVReader(inputStream);
+            playersList = csvReader.read();
+            userDao.insertPlayersList(playersList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
