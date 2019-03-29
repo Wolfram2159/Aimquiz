@@ -1,4 +1,4 @@
-package com.example.aimquiz;
+package com.wolfram.aimquiz;
 
 import org.junit.Test;
 
