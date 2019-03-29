@@ -7,11 +7,18 @@
     android:orientation="horizontal"
     android:padding="10dp">
 
+    <ImageView
+        android:id="@+id/team_image_view"
+        android:layout_width="@android:dimen/notification_large_icon_width"
+        android:layout_height="@android:dimen/notification_large_icon_height"
+        android:gravity="left"
+        android:src="@drawable/ic_team_vp"/>
+
     <TextView
-        android:id="@+id/my_text_view"
-        android:gravity="center"
+        android:id="@+id/team_text_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:textSize="20sp"
         />
 

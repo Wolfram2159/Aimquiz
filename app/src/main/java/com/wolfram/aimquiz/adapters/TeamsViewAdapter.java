@@ -33,7 +33,7 @@ public class TeamsViewAdapter extends RecyclerView.Adapter<TeamsViewAdapter.Team
         public TeamsViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            textView = itemView.findViewById(R.id.my_text_view);
+            textView = itemView.findViewById(R.id.team_text_view);
         }
 
         @Override
@@ -47,7 +47,7 @@ public class TeamsViewAdapter extends RecyclerView.Adapter<TeamsViewAdapter.Team
     @NonNull
     @Override
     public TeamsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.teams_view_row, parent, false);
         TeamsViewHolder vh = new TeamsViewHolder(view);
         return vh;
     }

@@ -12,22 +12,24 @@
 
     <Button
         android:id="@+id/btn_players"
-        android:onClick="playersClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="200dp"
         android:height="50dp"
+        android:onClick="playersClick"
         android:text="Players"
         />
+
     <Button
         android:id="@+id/btn_teams"
-        android:onClick="teamsClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="200dp"
         android:height="50dp"
+        android:onClick="teamsClick"
         android:text="Teams"
         />
+
     <Button
         android:id="@+id/btn_quiz"
         android:layout_width="wrap_content"
@@ -36,6 +38,7 @@
         android:height="50dp"
         android:text="AimQuiz"
         />
+
     <Button
         android:id="@+id/btn_records"
         android:layout_width="wrap_content"

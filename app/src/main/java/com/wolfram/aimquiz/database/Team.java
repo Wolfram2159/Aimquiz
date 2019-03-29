@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey;
  * @author Wolfram
  * @date 2019-03-17
  */
+
 @Entity(tableName = "teams")
 public class Team {
     @PrimaryKey

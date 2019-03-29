@@ -19,17 +19,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         File dbFile = getApplicationContext().getDatabasePath(AppDatabase.APPDATABASE_NAME);
-        if(!dbFile.exists()) {
+        if (!dbFile.exists()) {
             new CreateDatabaseTask(getApplicationContext()).execute();
         }
-        //todo: TeamActivity
-
     }
-    public void playersClick(View view){
+
+    public void playersClick(View view) {
         Intent intent = new Intent(this, PlayersActivity.class);
         startActivity(intent);
     }
-    public void teamsClick(View view){
+
+    public void teamsClick(View view) {
         Intent intent = new Intent(this, TeamsActivity.class);
         startActivity(intent);
     }

@@ -28,7 +28,7 @@ public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.
         public RecyclerViewHolder(View myView) {
             super(myView);
             myView.setOnClickListener(this);
-            textView = myView.findViewById(R.id.my_text_view);
+            textView = myView.findViewById(R.id.player_text_view);
         }
 
         @Override
@@ -47,7 +47,7 @@ public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.
     @NonNull
     @Override
     public PlayersViewAdapter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.players_view_row, parent, false);
         RecyclerViewHolder viewHolder = new RecyclerViewHolder(view);
         return viewHolder;
     }
