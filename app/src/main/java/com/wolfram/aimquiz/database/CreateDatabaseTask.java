@@ -18,6 +18,7 @@ public class CreateDatabaseTask extends AsyncTask<Void, Void, Void> {
     private CSVReader csvReader;
     private List<Team> teamList;
     private List<Player> playersList;
+
     public CreateDatabaseTask(Context context) {
         this.context = context;
     }
@@ -30,15 +31,10 @@ public class CreateDatabaseTask extends AsyncTask<Void, Void, Void> {
 
         UserDao userDao = db.userDao();
 
-        //Log.e("input stream",""+inputStream.toString()+"");
+        csvReader = new CSVReader(context, userDao);
 
-        csvReader = new CSVReader(Team.fileName, context);
-        teamList = csvReader.read();
-        userDao.InsertTeamList(teamList);
-
-        csvReader = new CSVReader(Player.fileName, context);
-        playersList = csvReader.read();
-        userDao.insertPlayersList(playersList);
+        csvReader.readTeams(Team.fileName);
+        csvReader.readPlayers(Player.fileName);
 
         return null;
     }

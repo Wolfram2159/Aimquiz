@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 
 /**
  * @author Wolfram
@@ -19,25 +20,17 @@ public interface UserDao {
     @Query("SELECT * FROM teams")
     List<Team> loadAllTeams();
 
-    /*@Query("SELECT * from teams")
-    List<Team> loadAllTeams();*/
-    /*@Query("SELECT * FROM players WHERE _id IN (:userIds)")
-    List<Player> loadAllByUserId(int... userIds);*/
-    @Insert
-    void insertAll(Player... users);
-
-    @Insert
-    void insertPlayersList(List<Player> users);
-
     @Insert
     void insertPlayer(Player player);
 
     @Insert
     void insertTeam(Team team);
 
-    @Delete
-    void delete(Player user);
-
+    @Transaction
     @Insert
-    void InsertTeamList(List<Team> teamList);
+    void insertPlayers(List<Player> users);
+
+    @Transaction
+    @Insert
+    void insertTeams(List<Team> teamList);
 }
