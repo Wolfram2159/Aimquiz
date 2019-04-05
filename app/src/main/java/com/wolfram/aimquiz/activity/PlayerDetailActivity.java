@@ -5,6 +5,11 @@ import android.os.Bundle;
 
 import com.wolfram.aimquiz.R;
 
+/**
+ * @author Wolfram
+ * @date 2019-04-01
+ */
+
 public class PlayerDetailActivity extends Activity {
 
     @Override

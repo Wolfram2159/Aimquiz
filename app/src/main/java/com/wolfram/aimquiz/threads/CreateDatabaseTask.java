@@ -1,11 +1,13 @@
-package com.wolfram.aimquiz.database;
+package com.wolfram.aimquiz.threads;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.wolfram.aimquiz.database.AppDatabase;
+import com.wolfram.aimquiz.database.Player;
+import com.wolfram.aimquiz.database.Team;
+import com.wolfram.aimquiz.database.UserDao;
 import com.wolfram.aimquiz.tools.CSVReader;
-
-import java.util.List;
 
 import androidx.room.Room;
 
@@ -16,8 +18,6 @@ import androidx.room.Room;
 public class CreateDatabaseTask extends AsyncTask<Void, Void, Void> {
     private Context context;
     private CSVReader csvReader;
-    private List<Team> teamList;
-    private List<Player> playersList;
 
     public CreateDatabaseTask(Context context) {
         this.context = context;

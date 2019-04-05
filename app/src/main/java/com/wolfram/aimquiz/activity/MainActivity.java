@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.wolfram.aimquiz.R;
 import com.wolfram.aimquiz.database.AppDatabase;
-import com.wolfram.aimquiz.database.CreateDatabaseTask;
+import com.wolfram.aimquiz.threads.CreateDatabaseTask;
 
 import java.io.File;
 
