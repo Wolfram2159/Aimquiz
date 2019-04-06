@@ -1,8 +1,10 @@
 package com.wolfram.aimquiz.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wolfram.aimquiz.R;
@@ -21,19 +23,23 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TeamsViewAdapter extends RecyclerView.Adapter<TeamsViewAdapter.TeamsViewHolder> {
     private List<Team> teamList;
     private ItemClickListener listener;
+    private Context context;
 
-    public TeamsViewAdapter(List<Team> teamList, ItemClickListener listener) {
+    public TeamsViewAdapter(List<Team> teamList, ItemClickListener listener, Context context) {
         this.teamList = teamList;
         this.listener = listener;
+        this.context = context;
     }
 
     public class TeamsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textView;
+        private ImageView imageView;
 
         public TeamsViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             textView = itemView.findViewById(R.id.team_text_view);
+            imageView = itemView.findViewById(R.id.team_image_view);
         }
 
         @Override
@@ -55,6 +61,7 @@ public class TeamsViewAdapter extends RecyclerView.Adapter<TeamsViewAdapter.Team
     @Override
     public void onBindViewHolder(@NonNull TeamsViewHolder holder, int position) {
         holder.textView.setText(teamList.get(position).toString());
+        holder.imageView.setImageResource(context.getResources().getIdentifier("team_"+(position+1),"drawable","com.wolfram.aimquiz"));
     }
 
     @Override

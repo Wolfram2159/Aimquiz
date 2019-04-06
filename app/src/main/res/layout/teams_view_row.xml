@@ -11,8 +11,7 @@
         android:id="@+id/team_image_view"
         android:layout_width="@android:dimen/notification_large_icon_width"
         android:layout_height="@android:dimen/notification_large_icon_height"
-        android:gravity="left"
-        android:src="@drawable/ic_team_vp"/>
+        android:gravity="left"/>
 
     <TextView
         android:id="@+id/team_text_view"

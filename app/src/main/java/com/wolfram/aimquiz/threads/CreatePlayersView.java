@@ -56,7 +56,7 @@ public class CreatePlayersView extends AsyncTask<Void, Void, List<Player>> {
                 Log.w("" + mAdapter.getItemId(position), "msg");
                 //todo: Going to PlayerDetailActivity
             }
-        });
+        },context);
         recyclerView.setAdapter(mAdapter);
     }
 }

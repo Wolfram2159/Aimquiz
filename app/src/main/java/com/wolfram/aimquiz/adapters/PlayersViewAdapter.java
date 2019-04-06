@@ -1,5 +1,6 @@
 package com.wolfram.aimquiz.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +22,16 @@ import androidx.recyclerview.widget.RecyclerView;
 public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.RecyclerViewHolder> {
     private List<Player> playerList;
     private ItemClickListener mClickListener;
-
+    private Context context;
     public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView textView;
-
+        private TextView textView;
+        //private ImageView imageView;
         public RecyclerViewHolder(View myView) {
             super(myView);
+
             myView.setOnClickListener(this);
             textView = myView.findViewById(R.id.player_text_view);
+            //imageView = myView.findViewById(R.id.player_image_view);
         }
 
         @Override
@@ -39,9 +42,10 @@ public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.
         }
     }
 
-    public PlayersViewAdapter(List<Player> playerList, ItemClickListener itemClickListener) {
+    public PlayersViewAdapter(List<Player> playerList, ItemClickListener itemClickListener, Context context) {
         this.playerList = playerList;
         this.mClickListener = itemClickListener;
+        this.context = context;
     }
 
     @NonNull
@@ -55,6 +59,7 @@ public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull PlayersViewAdapter.RecyclerViewHolder holder, int position) {
         holder.textView.setText(playerList.get(position).toString());
+
     }
 
     @Override

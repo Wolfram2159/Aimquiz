@@ -55,7 +55,7 @@ public class CreateTeamsView extends AsyncTask<Void, Void, List<Team>> {
                 Log.w("" + adapter.getItemId(position), "msg");
                 //todo: Going to view with players from this team
             }
-        });
+        },context);
         recyclerView.setAdapter(adapter);
     }
 }
