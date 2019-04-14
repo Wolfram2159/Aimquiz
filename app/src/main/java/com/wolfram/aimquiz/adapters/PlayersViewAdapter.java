@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wolfram.aimquiz.R;
@@ -25,13 +26,13 @@ public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.
     private Context context;
     public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textView;
-        //private ImageView imageView;
+        private ImageView imageView;
         public RecyclerViewHolder(View myView) {
             super(myView);
 
             myView.setOnClickListener(this);
             textView = myView.findViewById(R.id.player_text_view);
-            //imageView = myView.findViewById(R.id.player_image_view);
+            imageView = myView.findViewById(R.id.player_image_view);
         }
 
         @Override
@@ -59,7 +60,7 @@ public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull PlayersViewAdapter.RecyclerViewHolder holder, int position) {
         holder.textView.setText(playerList.get(position).toString());
-
+        holder.imageView.setImageResource(context.getResources().getIdentifier("player_"+(position+1),"drawable","com.wolfram.aimquiz"));
     }
 
     @Override

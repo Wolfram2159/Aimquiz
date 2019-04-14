@@ -11,8 +11,7 @@
         android:id="@+id/player_image_view"
         android:layout_width="@android:dimen/notification_large_icon_width"
         android:layout_height="@android:dimen/notification_large_icon_height"
-        android:gravity="left"
-        android:src="@drawable/player_neo"/>
+        android:gravity="left"/>
 
     <TextView
         android:id="@+id/player_text_view"
