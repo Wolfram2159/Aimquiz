@@ -2,6 +2,7 @@ package com.wolfram.aimquiz.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.wolfram.aimquiz.R;
 
@@ -17,6 +18,5 @@ public class PlayerDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_detail);
         int player_id = getIntent().getIntExtra("player_id",0);
-
     }
 }
