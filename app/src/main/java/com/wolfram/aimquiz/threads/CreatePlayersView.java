@@ -1,10 +1,12 @@
 package com.wolfram.aimquiz.threads;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 
+import com.wolfram.aimquiz.activity.PlayerDetailActivity;
 import com.wolfram.aimquiz.adapters.PlayersViewAdapter;
 import com.wolfram.aimquiz.database.AppDatabase;
 import com.wolfram.aimquiz.database.Player;
@@ -53,8 +55,10 @@ public class CreatePlayersView extends AsyncTask<Void, Void, List<Player>> {
         mAdapter = new PlayersViewAdapter(playerList, new ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Log.w("" + mAdapter.getItemId(position), "msg");
-                //todo: Going to PlayerDetailActivity
+                Log.w("" + (position), "msg");
+                Intent intent = new Intent(context, PlayerDetailActivity.class);
+                intent.putExtra("player_id",mAdapter.getItemId(position));
+                context.startActivity(intent);
             }
         },context);
         recyclerView.setAdapter(mAdapter);

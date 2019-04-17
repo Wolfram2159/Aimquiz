@@ -16,5 +16,7 @@ public class PlayerDetailActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_detail);
+        int player_id = getIntent().getIntExtra("player_id",0);
+
     }
 }

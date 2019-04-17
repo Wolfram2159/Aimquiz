@@ -3,7 +3,6 @@ package com.wolfram.aimquiz.database;
 import java.util.List;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
@@ -16,6 +15,9 @@ import androidx.room.Transaction;
 public interface UserDao {
     @Query("SELECT * FROM players")
     List<Player> loadAllPlayers();
+
+    @Query("SELECT * FROM players WHERE _id=(:userId)")
+    Player loadPlayer(int userId);
 
     @Query("SELECT * FROM teams")
     List<Team> loadAllTeams();
