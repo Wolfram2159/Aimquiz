@@ -57,7 +57,7 @@ public class CreatePlayersView extends AsyncTask<Void, Void, List<Player>> {
             public void onItemClick(View view, int position) {
                 Log.w("" + (position), "msg");
                 Intent intent = new Intent(context, PlayerDetailActivity.class);
-                intent.putExtra("player_id",mAdapter.getItemId(position));
+                intent.putExtra("player_id",position+1);
                 context.startActivity(intent);
             }
         },context);

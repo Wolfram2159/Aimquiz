@@ -12,51 +12,53 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/player_image_view"
+            android:id="@+id/detailplayer_image_view"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/player_1"/>
+            android:layout_alignParentLeft="true"/>
 
         <TextView
-            android:id="@+id/player_text_view"
+            android:id="@+id/player_nick"
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_toLeftOf="@+id/team_image_view"
             android:layout_toRightOf="@+id/player_image_view"
             android:gravity="center|center_vertical"
-            android:text="Magisk"
-            android:textSize="18dp"/>
+            android:textSize="24sp"
+            android:textStyle="bold"/>
 
         <ImageView
-            android:id="@+id/team_image_view"
+            android:id="@+id/detailTeam_image_view"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/team_1"/>
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/player_mouse"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:gravity="center_vertical"
-        android:text="mouse"/>
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textSize="30sp"/>
 
     <TextView
+        android:id="@+id/player_dpi"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:gravity="center_vertical"
-        android:text="sens"/>
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textSize="30sp"/>
 
     <TextView
+        android:id="@+id/player_sens"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:gravity="center_vertical"
-        android:text="resolution"/>
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textSize="30sp"/>
 
     <TextView
+        android:id="@+id/player_resolution"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:gravity="center_vertical"
-        android:text="DPI"/>
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textSize="30sp"/>
 </LinearLayout>
