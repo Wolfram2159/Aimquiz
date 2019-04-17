@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.PlayerDetailActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView android:id="@+id/player_image_view"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/player_1"/>
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/player_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_toLeftOf="@+id/team_image_view"
+            android:layout_toRightOf="@+id/player_image_view"
+            android:gravity="center|center_vertical"
+            android:textSize="18dp"
+            android:text="Magisk" />
+        <ImageView android:id="@+id/team_image_view"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/team_1"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:gravity="center_vertical"
+        android:text="mouse"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:gravity="center_vertical"
+        android:text="sens"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:gravity="center_vertical"
+        android:text="resolution"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:gravity="center_vertical"
+        android:text="DPI"/>
+</LinearLayout>
