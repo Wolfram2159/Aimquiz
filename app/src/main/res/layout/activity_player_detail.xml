@@ -6,33 +6,52 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               tools:context=".activity.PlayerDetailActivity">
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="32dp">
 
-        <ImageView
-            android:id="@+id/detailplayer_image_view"
+        <ImageView android:id="@+id/detailplayer_image_view"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_alignParentLeft="true"/>
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical"/>
 
-        <TextView
-            android:id="@+id/player_nick"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_toLeftOf="@+id/team_image_view"
-            android:layout_toRightOf="@+id/player_image_view"
-            android:gravity="center|center_vertical"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <TextView android:id="@+id/player_nick"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="2"
+                      android:gravity="center"
+                      android:textSize="24sp"
+                      android:textStyle="bold"/>
+            <TextView android:id="@+id/player_team_name"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="2"
+                      android:gravity="center"
+                      android:textSize="24sp"
+                      android:textStyle="bold"/>
+        </LinearLayout>
+
 
         <ImageView
             android:id="@+id/detailTeam_image_view"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"/>
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/player_mouse"

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.wolfram.aimquiz.database.AppDatabase;
 import com.wolfram.aimquiz.database.Player;
+import com.wolfram.aimquiz.database.Team;
 import com.wolfram.aimquiz.database.UserDao;
 
 import androidx.room.Room;
@@ -21,17 +22,20 @@ public class CreatePlayerDetailView extends AsyncTask<Void, Void, Player> {
     private Context context;
     private ImageView player_view;
     private TextView nick;
+    private TextView teamName;
     private ImageView team_view;
     private TextView mouse;
     private TextView dpi;
     private TextView sens;
     private TextView resolution;
+    private String team_name;
 
-    public CreatePlayerDetailView(int player_id, Context context, ImageView player_view, TextView nick, ImageView team_view, TextView mouse, TextView dpi, TextView sens, TextView resolution) {
+    public CreatePlayerDetailView(int player_id, Context context, ImageView player_view, TextView nick, TextView teamName, ImageView team_view, TextView mouse, TextView dpi, TextView sens, TextView resolution) {
         this.player_id = player_id;
         this.context = context;
         this.player_view = player_view;
         this.nick = nick;
+        this.teamName = teamName;
         this.team_view = team_view;
         this.mouse = mouse;
         this.dpi = dpi;
@@ -48,6 +52,8 @@ public class CreatePlayerDetailView extends AsyncTask<Void, Void, Player> {
         UserDao userDao = db.userDao();
         Player player = userDao.loadPlayer(player_id);
         Log.e("player id", ""+player.getId()+"");
+        Team team = userDao.loadTeam(player.getTeam_id());
+        team_name = team.getName();
         return player;
     }
 
@@ -59,6 +65,7 @@ public class CreatePlayerDetailView extends AsyncTask<Void, Void, Player> {
                 "drawable",
                 "com.wolfram.aimquiz"));
         nick.setText(player.getNick());
+        teamName.setText(team_name);
         team_view.setImageResource(context.getResources().getIdentifier(
                 "team_"+player.getTeam_id(),
                 "drawable",

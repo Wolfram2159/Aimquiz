@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.wolfram.aimquiz.activity.PlayerDetailActivity;
 import com.wolfram.aimquiz.adapters.PlayersViewAdapter;
@@ -21,17 +22,20 @@ import androidx.room.Room;
 
 /**
  * @author Wolfram
- * @date 2019-04-05
+ * @date 2019-04-18
  */
-
-public class CreatePlayersView extends AsyncTask<Void, Void, List<Player>> {
+public class CreateTeamDetailView extends AsyncTask<Void, Void, List<Player>> {
     private Context context;
+    private int team_id;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
+    private ImageView imageView;
 
-    public CreatePlayersView(Context context, RecyclerView recyclerView) {
+    public CreateTeamDetailView(Context context, int team_id, RecyclerView recyclerView, ImageView imageView) {
         this.context = context;
+        this.team_id = team_id;
         this.recyclerView = recyclerView;
+        this.imageView = imageView;
     }
 
     @Override
@@ -41,23 +45,26 @@ public class CreatePlayersView extends AsyncTask<Void, Void, List<Player>> {
                 .build();
 
         UserDao userDao = db.userDao();
-        List<Player> playerList = userDao.loadAllPlayers();
+        List<Player> playerList = userDao.loadPlayersFromTeam(team_id);
         return playerList;
     }
 
     @Override
-    protected void onPostExecute(final List<Player> playerList) {
+    protected void onPostExecute(final List<Player> players) {
         recyclerView.setHasFixedSize(true);
-
+        imageView.setImageResource(context.getResources().getIdentifier(
+                "team_"+team_id,
+                "drawable",
+                "com.wolfram.aimquiz"));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new PlayersViewAdapter(playerList, new ItemClickListener() {
+        mAdapter = new PlayersViewAdapter(players, new ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Log.w("" + (position), "msg");
+                Log.w("" + players.get(position).getId(), "msg");
                 Intent intent = new Intent(context, PlayerDetailActivity.class);
-                intent.putExtra("player_id",playerList.get(position).getId());
+                intent.putExtra("player_id",players.get(position).getId());
                 context.startActivity(intent);
             }
         },context);

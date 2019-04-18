@@ -60,7 +60,7 @@ public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull PlayersViewAdapter.RecyclerViewHolder holder, int position) {
         holder.textView.setText(playerList.get(position).toString());
-        holder.imageView.setImageResource(context.getResources().getIdentifier("player_"+(position+1),"drawable","com.wolfram.aimquiz"));
+        holder.imageView.setImageResource(context.getResources().getIdentifier("player_"+playerList.get(position).getId(),"drawable","com.wolfram.aimquiz"));
     }
 
     @Override

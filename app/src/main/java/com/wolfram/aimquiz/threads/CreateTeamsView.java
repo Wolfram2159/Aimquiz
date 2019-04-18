@@ -1,10 +1,12 @@
 package com.wolfram.aimquiz.threads;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 
+import com.wolfram.aimquiz.activity.TeamDetailActivity;
 import com.wolfram.aimquiz.adapters.TeamsViewAdapter;
 import com.wolfram.aimquiz.database.AppDatabase;
 import com.wolfram.aimquiz.database.Team;
@@ -53,7 +55,9 @@ public class CreateTeamsView extends AsyncTask<Void, Void, List<Team>> {
             @Override
             public void onItemClick(View view, int position) {
                 Log.w("" + adapter.getItemId(position), "msg");
-                //todo: Going to view with players from this team
+                Intent intent = new Intent(context, TeamDetailActivity.class);
+                intent.putExtra("team_id",position+1);
+                context.startActivity(intent);
             }
         },context);
         recyclerView.setAdapter(adapter);
