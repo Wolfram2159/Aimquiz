@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.RecyclerViewHolder> {
     private List<Player> playerList;
-    private ItemClickListener mClickListener;
+    private ItemClickListener itemClickListener;
     private Context context;
     public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textView;
@@ -37,15 +37,15 @@ public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) {
-                mClickListener.onItemClick(view, getAdapterPosition());
+            if (itemClickListener != null) {
+                itemClickListener.onItemClick(view, getAdapterPosition());
             }
         }
     }
 
     public PlayersViewAdapter(List<Player> playerList, ItemClickListener itemClickListener, Context context) {
         this.playerList = playerList;
-        this.mClickListener = itemClickListener;
+        this.itemClickListener = itemClickListener;
         this.context = context;
     }
 
@@ -60,7 +60,10 @@ public class PlayersViewAdapter extends RecyclerView.Adapter<PlayersViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull PlayersViewAdapter.RecyclerViewHolder holder, int position) {
         holder.textView.setText(playerList.get(position).toString());
-        holder.imageView.setImageResource(context.getResources().getIdentifier("player_"+playerList.get(position).getId(),"drawable","com.wolfram.aimquiz"));
+        holder.imageView.setImageResource(context.getResources().getIdentifier(
+                "player_"+playerList.get(position).getId(),
+                "drawable",
+                "com.wolfram.aimquiz"));
     }
 
     @Override

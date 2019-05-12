@@ -2,10 +2,11 @@ package com.wolfram.aimquiz.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "players" /*, foreignKeys = @ForeignKey(entity = Team.class, parentColumns = "_id",childColumns = "team_id")*/)
+@Entity(tableName = "players" , foreignKeys = @ForeignKey(entity = Team.class, parentColumns = "_id", childColumns = "team_id"))
 public class Player {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
