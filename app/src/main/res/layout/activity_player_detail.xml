@@ -1,83 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".activity.PlayerDetailActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.PlayerDetailActivity">
+
+    <ImageView
+        android:id="@+id/detailplayer_image_view"
+        android:layout_width="@dimen/player_detail_size"
+        android:layout_height="@dimen/player_detail_size"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="TODO"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/player_1"/>
+
+    <ImageView
+        android:id="@+id/detailTeam_image_view"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="TODO"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/team_2"/>
+
+    <TextView
+        android:id="@+id/player_nick"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/detailTeam_image_view"
+        app:layout_constraintStart_toEndOf="@+id/detailplayer_image_view"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Magisk"/>
+
+    <TextView
+        android:id="@+id/player_team_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/player_mouse"
+        app:layout_constraintEnd_toStartOf="@+id/detailTeam_image_view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/detailplayer_image_view"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        tools:text="Astralis"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="32dp">
-
-        <ImageView android:id="@+id/detailplayer_image_view"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center_vertical"/>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-            <TextView android:id="@+id/player_nick"
-                      android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:layout_weight="2"
-                      android:gravity="center"
-                      android:textSize="24sp"
-                      android:textStyle="bold"/>
-            <TextView android:id="@+id/player_team_name"
-                      android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:layout_weight="2"
-                      android:gravity="center"
-                      android:textSize="24sp"
-                      android:textStyle="bold"/>
-        </LinearLayout>
-
-
-        <ImageView
-            android:id="@+id/detailTeam_image_view"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_gravity="center_vertical"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"/>
-
-
-    </LinearLayout>
+        app:layout_constraintGuide_begin="82dp"/>
 
     <TextView
         android:id="@+id/player_mouse"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:textSize="30sp"/>
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailplayer_image_view"/>
 
     <TextView
         android:id="@+id/player_dpi"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:textSize="30sp"/>
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_mouse"/>
 
     <TextView
         android:id="@+id/player_sens"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:textSize="30sp"/>
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_dpi"/>
 
     <TextView
         android:id="@+id/player_resolution"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:textSize="30sp"/>
-</LinearLayout>
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_sens"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,18 +18,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 /*
 todo:
-ConstraintLayout
-https://constraintlayout.com/basics/barriers.html
+ConstraintLayout todo: done
+https://constraintlayout.com/basics/barriers.html todo: done
 https://github.com/bumptech/glide
-extends AppcompatAct.
+extends AppcompatAct. todo: done
 
-https://developer.android.com/topic/libraries/architecture/livedata
+https://developer.android.com/topic/libraries/architecture/livedata todo: done
 
-https://github.com/JakeWharton/butterknife (pamietac ze nie moga byc prywatne)
+https://github.com/JakeWharton/butterknife (pamietac ze nie moga byc prywatne) todo: done
 
 jesli chcemy wrzucic jakas klase do wnętrza innej tylko dlatego że tak jest wygodniej/czytelniej zamiast w osobnym pliku to ta klasa powinna być static (tak zwana inner static class)
 
 ModelView
+
+what is difference between scaleTypes on ImageView
 */
 public class MainActivity extends AppCompatActivity {
 

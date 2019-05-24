@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
     android:gravity="center"
-    android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
     <Button
@@ -18,6 +17,11 @@
         android:height="50dp"
         android:onClick="playersClick"
         android:text="Players"
+        app:layout_constraintBottom_toTopOf="@+id/btn_teams"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         />
 
     <Button
@@ -28,6 +32,9 @@
         android:height="50dp"
         android:onClick="teamsClick"
         android:text="Teams"
+        app:layout_constraintBottom_toTopOf="@+id/btn_quiz"
+        app:layout_constraintStart_toStartOf="@+id/btn_players"
+        app:layout_constraintTop_toBottomOf="@+id/btn_players"
         />
 
     <Button
@@ -37,7 +44,9 @@
         android:width="200dp"
         android:height="50dp"
         android:text="AimQuiz"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/btn_records"
+        app:layout_constraintStart_toStartOf="@+id/btn_teams"
+        app:layout_constraintTop_toBottomOf="@+id/btn_teams"/>
 
     <Button
         android:id="@+id/btn_records"
@@ -46,6 +55,9 @@
         android:width="200dp"
         android:height="50dp"
         android:text="Records"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btn_quiz"
+        app:layout_constraintTop_toBottomOf="@+id/btn_quiz"
         />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
