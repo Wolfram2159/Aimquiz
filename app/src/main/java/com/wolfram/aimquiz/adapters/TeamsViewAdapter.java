@@ -1,19 +1,28 @@
 package com.wolfram.aimquiz.adapters;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.wolfram.aimquiz.R;
 import com.wolfram.aimquiz.database.Team;
+import com.wolfram.aimquiz.glide.RequestBuilderFactory;
 import com.wolfram.aimquiz.tools.ItemClickListener;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -23,23 +32,24 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TeamsViewAdapter extends RecyclerView.Adapter<TeamsViewAdapter.TeamsViewHolder> {
     private List<Team> teamList;
     private ItemClickListener listener;
-    private Context context;
+    private RequestBuilderFactory requestFactory;
 
     public TeamsViewAdapter(List<Team> teamList, ItemClickListener listener, Context context) {
         this.teamList = teamList;
         this.listener = listener;
-        this.context = context;
+        requestFactory = new RequestBuilderFactory(context);
     }
-
+    //todo: try to remake this class to inner static, watch MainAcitvity
     public class TeamsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textView;
         private ImageView imageView;
-
-        public TeamsViewHolder(@NonNull View itemView) {
+        private ProgressBar progressBar;
+        TeamsViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             textView = itemView.findViewById(R.id.team_text_view);
             imageView = itemView.findViewById(R.id.team_image_view);
+            progressBar = itemView.findViewById(R.id.team_progress_bar);
         }
 
         @Override
@@ -60,8 +70,25 @@ public class TeamsViewAdapter extends RecyclerView.Adapter<TeamsViewAdapter.Team
 
     @Override
     public void onBindViewHolder(@NonNull TeamsViewHolder holder, int position) {
-        holder.textView.setText(teamList.get(position).toString());
-        holder.imageView.setImageResource(context.getResources().getIdentifier("team_"+(position+1),"drawable","com.wolfram.aimquiz"));
+        Team team = teamList.get(position);
+        holder.textView.setText(team.getName());
+        holder.progressBar.setVisibility(View.VISIBLE);
+
+        RequestBuilder request = requestFactory.getTeamRequestBuilder(team.getTeamHLTV(), new RequestListener<Drawable>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                holder.progressBar.setVisibility(View.GONE);
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                holder.progressBar.setVisibility(View.GONE);
+                return false;
+            }
+        });
+        request.into(holder.imageView);
+
     }
 
     @Override

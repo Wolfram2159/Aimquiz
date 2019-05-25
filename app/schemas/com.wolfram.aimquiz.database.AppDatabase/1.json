@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "dfed95683d19157b8b744358d4eddbb6",
+    "identityHash": "89f209852ab3e5409a834c75d16389d0",
     "entities": [
       {
         "tableName": "players",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nick` TEXT, `team_id` INTEGER NOT NULL, `mouse` TEXT, `DPI` TEXT, `sens` TEXT, `resolution` TEXT, FOREIGN KEY(`team_id`) REFERENCES `teams`(`_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nick` TEXT, `team_id` INTEGER NOT NULL, `mouse` TEXT, `DPI` TEXT, `sens` TEXT, `resolution` TEXT, `playerHLTV` INTEGER NOT NULL, FOREIGN KEY(`team_id`) REFERENCES `teams`(`_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -49,6 +49,12 @@
             "columnName": "resolution",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "playerHLTV",
+            "columnName": "playerHLTV",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -74,7 +80,7 @@
       },
       {
         "tableName": "teams",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER NOT NULL, `name` TEXT, PRIMARY KEY(`_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER NOT NULL, `name` TEXT, `teamHLTV` INTEGER NOT NULL, PRIMARY KEY(`_id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -87,6 +93,12 @@
             "columnName": "name",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "teamHLTV",
+            "columnName": "teamHLTV",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -102,7 +114,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"dfed95683d19157b8b744358d4eddbb6\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"89f209852ab3e5409a834c75d16389d0\")"
     ]
   }
 }

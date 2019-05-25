@@ -11,15 +11,24 @@
     tools:context=".activity.TeamDetailActivity">
 
     <ImageView
-        android:id="@+id/teamDeatil_image_view"
+        android:id="@+id/team_detail_image_view"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/team_1"/>
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/team_detail_progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/team_detail_image_view"
+        app:layout_constraintEnd_toEndOf="@+id/team_detail_image_view"
+        app:layout_constraintStart_toStartOf="@+id/team_detail_image_view"
+        app:layout_constraintTop_toTopOf="@+id/team_detail_image_view"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/playersFromTeamRecyclerView"
@@ -33,6 +42,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teamDeatil_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/team_detail_image_view"
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

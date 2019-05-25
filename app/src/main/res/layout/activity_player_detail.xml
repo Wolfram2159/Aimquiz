@@ -17,8 +17,17 @@
         android:contentDescription="TODO"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/player_1"/>
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/player_detail_player_progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/detailplayer_image_view"
+        app:layout_constraintEnd_toEndOf="@+id/detailplayer_image_view"
+        app:layout_constraintStart_toStartOf="@+id/detailplayer_image_view"
+        app:layout_constraintTop_toTopOf="@+id/detailplayer_image_view"/>
 
     <ImageView
         android:id="@+id/detailTeam_image_view"
@@ -30,19 +39,27 @@
         android:contentDescription="TODO"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/team_2"/>
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/player_detail_team_progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/detailTeam_image_view"
+        app:layout_constraintEnd_toEndOf="@+id/detailTeam_image_view"
+        app:layout_constraintStart_toStartOf="@+id/detailTeam_image_view"
+        app:layout_constraintTop_toTopOf="@+id/detailTeam_image_view"/>
 
     <TextView
         android:id="@+id/player_nick"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="65dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:gravity="center"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -54,10 +71,9 @@
     <TextView
         android:id="@+id/player_team_name"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="65dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
@@ -75,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="82dp"/>
+        app:layout_constraintGuide_begin="74dp"/>
 
     <TextView
         android:id="@+id/player_mouse"

@@ -17,15 +17,20 @@ public class Player {
     private String DPI;
     private String sens;
     private String resolution;
+    private int playerHLTV;
     @Ignore
     public final static String fileName = "players.csv";
+    @Ignore
+    public final static String HLTV_URL_PNG = "https://static.hltv.org//images/playerprofile/bodyshot/compressed/";
+    @Ignore
+    public final static String HLTV_URL_JPEG = "https://static.hltv.org/images/playerprofile/thumb/";
+    @Ignore
+    public final static String HLTV_URL_UNKNOWN = "https://static.hltv.org//images/playerprofile/bodyshot/unknown.png";
 
-    @Override
-    public String toString() {
-        return nick;
+    public Player() {
     }
 
-    public Player(int id, int team_id, String nick, String mouse, String DPI, String sens, String resolution) {
+    public Player(int id, String nick, int team_id, String mouse, String DPI, String sens, String resolution, int playerHLTV) {
         this.id = id;
         this.nick = nick;
         this.team_id = team_id;
@@ -33,6 +38,21 @@ public class Player {
         this.DPI = DPI;
         this.sens = sens;
         this.resolution = resolution;
+        this.playerHLTV = playerHLTV;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", nick='" + nick + '\'' +
+                ", team_id=" + team_id +
+                ", mouse='" + mouse + '\'' +
+                ", DPI='" + DPI + '\'' +
+                ", sens='" + sens + '\'' +
+                ", resolution='" + resolution + '\'' +
+                ", playerHLTV=" + playerHLTV +
+                '}';
     }
 
     public int getId() {
@@ -89,5 +109,13 @@ public class Player {
 
     public void setResolution(String resolution) {
         this.resolution = resolution;
+    }
+
+    public int getPlayerHLTV() {
+        return playerHLTV;
+    }
+
+    public void setPlayerHLTV(int playerHLTV) {
+        this.playerHLTV = playerHLTV;
     }
 }

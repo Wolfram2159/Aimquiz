@@ -35,7 +35,10 @@ public interface UserDao {
     @Query("SELECT * FROM teams")
     LiveData<List<Team>> loadAllTeams();
 
-    @Query("SELECT teams._id, teams.name " +
+    @Query("SELECT * FROM teams WHERE _id=(:team_id)")
+    LiveData<Team> loadTeam(int team_id);
+
+    @Query("SELECT teams._id, teams.name, teams.teamHLTV " +
             "FROM teams JOIN players " +
             "ON players.team_id=teams._id " +
             "WHERE players._id=(:playerId)")

@@ -16,25 +16,38 @@ public class Team {
     @ColumnInfo(name = "_id")
     private int id;
     private String name;
+    private int teamHLTV;
     @Ignore
     public final static String fileName = "teams.csv";
+    @Ignore
+    public final static String HLTV_URL = "https://static.hltv.org/images/team/logo/";
+    @Ignore
+    public final static String HLTV_URL_UNKNOWN = "https://static.hltv.org/images/team/logo/10044";
+
+    public Team() {
+    }
+
+    public Team(int id, String name, int teamHLTV) {
+        this.id = id;
+        this.name = name;
+        this.teamHLTV = teamHLTV;
+    }
 
     @Override
     public String toString() {
-        return name;
-    }
-
-    public Team(int id, String name) {
-        this.id = id;
-        this.name = name;
+        return "Team{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", teamHLTV=" + teamHLTV +
+                '}';
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int team_id) {
-        this.id = team_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -43,5 +56,13 @@ public class Team {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getTeamHLTV() {
+        return teamHLTV;
+    }
+
+    public void setTeamHLTV(int teamHLTV) {
+        this.teamHLTV = teamHLTV;
     }
 }

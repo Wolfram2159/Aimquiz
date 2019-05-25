@@ -45,7 +45,8 @@ public class CSVReader {
                 String DPI = row[4];
                 String sens = row[5];
                 String resolution = row[6];
-                playerList.add(new Player(id, team_id, nick, mouse, DPI, sens, resolution));
+                int hltvId = Integer.valueOf(row[7]);
+                playerList.add(new Player(id, nick, team_id, mouse, DPI, sens, resolution, hltvId));
             }
             reader.close();
             userDao.insertPlayers(playerList);
@@ -64,7 +65,8 @@ public class CSVReader {
                 String[] row = csvLine.split(";");
                 Integer id = Integer.valueOf(row[0]);
                 String name = row[1];
-                teamList.add(new Team(id, name));
+                int hltvId = Integer.valueOf(row[2]);
+                teamList.add(new Team(id, name, hltvId));
             }
             reader.close();
             userDao.insertTeams(teamList);
