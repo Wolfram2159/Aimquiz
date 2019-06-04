@@ -1,17 +1,19 @@
-package com.wolfram.aimquiz.activity;
+package com.wolfram.aimquiz.activities.teams;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Fade;
+import android.widget.ImageView;
 
 import com.wolfram.aimquiz.R;
+import com.wolfram.aimquiz.activities.teamdetail.TeamDetailActivity;
 import com.wolfram.aimquiz.adapters.TeamsViewAdapter;
-import com.wolfram.aimquiz.database.AppDatabase;
-import com.wolfram.aimquiz.database.Team;
-
-import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
+import androidx.core.view.ViewCompat;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -22,7 +24,8 @@ import butterknife.ButterKnife;
  * @date 2019-04-05
  */
 public class TeamsActivity extends AppCompatActivity {
-    @BindView(R.id.teams_recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.teams_recycler_view)
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +33,9 @@ public class TeamsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_teams);
         ButterKnife.bind(this);
 
-        LiveData<List<Team>> teamList = AppDatabase.getInstance(this).getUserDao().loadAllTeams();
-        teamList.observe(this, (teams) -> {
+        TeamsViewModel model = ViewModelProviders.of(this).get(TeamsViewModel.class);
+
+        model.getTeamsList().observe(this, (teams) -> {
             recyclerView.setHasFixedSize(true);
 
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -40,7 +44,15 @@ public class TeamsActivity extends AppCompatActivity {
             RecyclerView.Adapter adapter = new TeamsViewAdapter(teams, (view, position) -> {
                 Intent intent = new Intent(this, TeamDetailActivity.class);
                 intent.putExtra("team_id", teams.get(position).getId());
-                startActivity(intent);
+
+                getWindow().setEnterTransition(new Fade(Fade.IN));
+                getWindow().setEnterTransition(new Fade(Fade.OUT));
+
+                ImageView iv = view.findViewById(R.id.team_image_view);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                        new Pair<>(iv, ViewCompat.getTransitionName(iv))
+                );
+                startActivity(intent, options.toBundle());
             }, this);
             recyclerView.setAdapter(adapter);
         });

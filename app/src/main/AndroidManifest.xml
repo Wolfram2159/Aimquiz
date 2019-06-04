@@ -11,11 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.TeamDetailActivity"/>
-        <activity android:name=".activity.PlayerDetailActivity"/>
-        <activity android:name=".activity.TeamsActivity"/>
-        <activity android:name=".activity.PlayersActivity"/>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activities.teamdetail.TeamDetailActivity"/>
+        <activity android:name=".activities.playerdetail.PlayerDetailActivity"/>
+        <activity android:name=".activities.teams.TeamsActivity"/>
+        <activity android:name=".activities.players.PlayersActivity"/>
+        <activity android:name=".activities.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

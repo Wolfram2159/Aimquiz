@@ -1,4 +1,4 @@
-package com.wolfram.aimquiz.activity;
+package com.wolfram.aimquiz.activities.playerdetail;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,14 +13,11 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.wolfram.aimquiz.R;
-import com.wolfram.aimquiz.database.AppDatabase;
-import com.wolfram.aimquiz.database.Player;
-import com.wolfram.aimquiz.database.Team;
 import com.wolfram.aimquiz.glide.RequestBuilderFactory;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProviders;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -50,10 +47,12 @@ public class PlayerDetailActivity extends AppCompatActivity {
 
         int player_id = getIntent().getIntExtra("player_id",1);
 
-        LiveData<Player> player = AppDatabase.getInstance(this).getUserDao().loadPlayer(player_id);
+        PlayerDetailViewModel model = ViewModelProviders.of(this).get(PlayerDetailViewModel.class);
+
         RequestBuilderFactory requestFactory = new RequestBuilderFactory(this);
         playerProgressBar.setVisibility(View.VISIBLE);
-        player.observe(this, (thisPlayer) -> {
+
+        model.getPlayer(player_id).observe(this, (thisPlayer) -> {
             RequestBuilder requestBuilder = requestFactory.getPlayerRequestBuilder(thisPlayer.getPlayerHLTV(), new RequestListener<Drawable>() {
                 @Override
                 public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -75,8 +74,7 @@ public class PlayerDetailActivity extends AppCompatActivity {
             resolution.setText(thisPlayer.getResolution());
         });
 
-        LiveData<Team> team = AppDatabase.getInstance(this).getUserDao().loadTeamByPlayerId(player_id);
-        team.observe(this, (thisTeam) -> {
+        model.getTeam(player_id).observe(this, (thisTeam) -> {
             teamProgressBar.setVisibility(View.VISIBLE);
             RequestBuilder requestBuilder = requestFactory.getTeamRequestBuilder(thisTeam.getTeamHLTV(), new RequestListener<Drawable>() {
                 @Override
